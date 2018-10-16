@@ -6,7 +6,7 @@ README.md
 Task1:技术清障
 Task2:数据库设计
 Task3:系统原型设计
-Task4:基于Github的团队开发磨合
+Task4:基于Github的团队开发磨合，熟悉github使用
 
 王卡驿站
 一、项目描述：
