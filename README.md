@@ -5,11 +5,17 @@ README.md
 --20181017
 增加spring工程文件，创建分支feature_zhaoy620181017
 
-2018年10月16日 TaskList
+2018年10月17日 
+Sprint One TaskList Product Backlog
 Task1:技术清障
 Task2:数据库设计
-Task3:系统原型设计
+Task3:移动端和PC端系统原型设计
 Task4:基于Github的团队开发磨合，熟悉github使用
+Task5:前端UI
+Task6:后端UI
+Task7:前端功能设计
+Task8:后端功能设计
+Task9:
 
 王卡驿站
 一、项目描述：
