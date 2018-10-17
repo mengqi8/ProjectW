@@ -23,3 +23,8 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### myselft ###
+src/main/resources/application-dev.properties
+src/main/resources/settings.properties
+/.vscode/
