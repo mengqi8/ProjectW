@@ -66,7 +66,7 @@ API返回举例：
             svc_num: "xxx",             号码
             province: "xxx",            归属省
             city: "xxx",                归属市
-            number_status: "xxx"        号码状态：0：可用，1：预占，2：在用
+            number_status: xxx          号码状态（数字）：0：可用，1：预占，2：在用
         }, {
             ... 另一条信息
         }],
@@ -75,35 +75,45 @@ API返回举例：
 
 具体调用方式请见 2.4.1 ～ 2.4.4 节。
 
-### 2.4.1 此API是否需要待定
+#### 2.4.1 此API是否需要待定
 
 value可能是订单号或联系电话或要办理的手机号，返回所有查询到的信息
 
 GET <http://10.52.200.46:9002/api/order?key=input&value=12345>
 
-### 2.4.2 根据订单号查询订单
+#### 2.4.2 根据订单号查询订单
 
 value是订单号
 
 GET <http://10.52.200.46:9002/api/order?key=order_id&value=12345>
 
-### 2.4.3 根据联系电话查询
+#### 2.4.3 根据联系电话查询
 
 value是联系电话
 
 GET <http://10.52.200.46:9002/api/order?key=contact_phone&value=15555555555>
 
-### 2.4.4 根据要办理的手机号查询
+#### 2.4.4 根据要办理的手机号查询
 
 value是要办理的手机号
 
 GET <http://10.52.200.46:9002/api/order?key=svc_num&value=18666666666>
 
-### 2.4.5 根据订单状态查询
+#### 2.4.5 根据订单状态查询
 
 value对应orderdetail.status
 
 GET <http://10.52.200.46:9002/api/order?key=status&value=xxxxx>
+
+### 2.5 根据日期对订单进行统计
+
+输入：date：要查询的日期，格式为YYYY-MM-DD
+
+GET <http://10.52.200.46:9002/api/order/count_by_day?date=2018-10-18>
+
+输出内容包含省分名称、数量、日期（这个日期和输入的参数一样），举例：
+
+    {"error":null,"result":[{"province":"浙江","count":2,"date":"2018-10-18"},{"province":"山西","count":1,"date":"2018-10-18"}]}
 
 ## 3. Java API
 
