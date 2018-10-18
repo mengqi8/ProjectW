@@ -11,7 +11,7 @@
 
 api返回字段：result、error
 
-    GET <http://10.52.200.46:8801/api/number/15533333333>
+GET <http://10.52.200.46:8801/api/number/15533333333>
 
 ## 2. 中台系统API（go）
 
@@ -19,15 +19,15 @@ api返回字段：result、error，可根据需要，增加返回码字段，具
 
 ### 2.1 API服务健康度检查，永远返回ok
 
-    GET <http://10.52.200.46:9002/api/ping>
+GET <http://10.52.200.46:9002/api/ping>
 
 ### 2.2 返回20条状态为可用的号码资源：
 
-    GET <http://10.52.200.46:9002/api/number/random>
+GET <http://10.52.200.46:9002/api/number/random>
 
 ### 2.3 订单查询（已废弃）
 
-    GET <http://10.52.200.46:9002/api/order/list>
+GET <http://10.52.200.46:9002/api/order/list>
 
 ### 2.4 根据不同的输入条件，查询订单信息
 
@@ -79,31 +79,31 @@ API返回举例：
 
 value可能是订单号或联系电话或要办理的手机号，返回所有查询到的信息
 
-    GET <http://10.52.200.46:9002/api/order?key=input&value=12345>
+GET <http://10.52.200.46:9002/api/order?key=input&value=12345>
 
 ### 2.4.2 根据订单号查询订单
 
 value是订单号
 
-    GET <http://10.52.200.46:9002/api/order?key=order_id&value=12345>
+GET <http://10.52.200.46:9002/api/order?key=order_id&value=12345>
 
 ### 2.4.3 根据联系电话查询
 
 value是联系电话
 
-    GET <http://10.52.200.46:9002/api/order?key=contact_phone&value=15555555555>
+GET <http://10.52.200.46:9002/api/order?key=contact_phone&value=15555555555>
 
 ### 2.4.4 根据要办理的手机号查询
 
 value是要办理的手机号
 
-    GET <http://10.52.200.46:9002/api/order?key=svc_num&value=18666666666>
+GET <http://10.52.200.46:9002/api/order?key=svc_num&value=18666666666>
 
 ### 2.4.5 根据订单状态查询
 
 value对应orderdetail.status
 
-    GET <http://10.52.200.46:9002/api/order?key=status&value=xxxxx>
+GET <http://10.52.200.46:9002/api/order?key=status&value=xxxxx>
 
 ## 3. Java API
 
