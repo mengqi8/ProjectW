@@ -111,7 +111,9 @@ GET <http://10.52.200.46:9002/api/order?key=status&value=xxxxx>
 
 GET <http://10.52.200.46:9002/api/order/count_by_day?date=2018-10-18>
 
-输出内容包含省分名称、数量、日期（这个日期和输入的参数一样），举例：
+输出内容包含省分名称、数量、日期（这个日期和输入的参数一样），这些订单只包括状态为*处理完*的订单。处理完的定义：`orderdetail.status = 1` 且 `orderdetail.update_time is not null`
+
+返回内容举例：
 
     {"error":null,"result":[{"province":"浙江","count":2,"date":"2018-10-18"},{"province":"山西","count":1,"date":"2018-10-18"}]}
 
