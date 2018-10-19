@@ -115,11 +115,52 @@ GET <http://10.52.200.46:9002/api/order/count_by_day?date=2018-10-18>
 
 返回内容举例：
 
-    {"error":null,"result":[{"province":"浙江","count":2,"date":"2018-10-18"},{"province":"山西","count":1,"date":"2018-10-18"}]}
+    {"error":null,"result":[{"name":"浙江","value":2,"date":"2018-10-18"},{"name":"山西","value":1,"date":"2018-10-18"}]}
+
+### 2.6 订单确认接口
+
+功能：对某个订单进行确认，包括确认办理和取消办理。在进行订单确认的同时，可以根据需要修改姓名、证件号码和地址。
+
+调用方式：
+
+GET <http://10.52.200.46:9002/api/order/confirm?order_id=订单ID&status=状态码&customer_name=姓名&cert_num=证件号码&address=地址>
+
+必填参数：
+- order_id：订单号：数字
+- status：是否确认办理：1：确认办理：2：取消办理
+
+可选参数
+- customer_name：姓名：如果要修改，则提供此参数
+- cert_num：证件号码：如果要修改，则提供此参数
+- address：地址：如果要修改，则提供此参数
+
+#### 流程说明
+
+A: 在进行确认办理或取消办理前需要进行的操作
+
+1. 判断orderdetail表有没有这条订单，如果没有，则无法继续处理
+2. 判断orderdetail表中的这条订单的状态（status）是否为0，只有为0的订单才能设置为1（办理成功）或2（取消办理）
+
+B: 当用户选择确认办理，要进行的操作：
+
+1. 更新 service_num.status 修改为2（表示再用）
+2. 更新orderdetail.status修改为1（表示办理成功）
+3. 如果用户提供了姓名，修改用户id对应的姓名
+4. 如果用户提供了身份证，修改用户id对应的身份证
+5. 如果用户提供了地址，要么就修改orderdetail表的address字段
+
+C: 当用户选择取消办理，要进行的操作：
+
+1. 更新service_num.status，修改为0（表示可用）
+2. 更新orderdetail.status，修改为2（表示不再办理）
 
 ## 3. Java API
 
 订单提交 接口，后面的是邮寄地址
 
-<http://192.168.1.128:8090/add/insert?svcId=3&customerName=姓名&c姓名&certNum=123456789012344&contactPhone=15657175987&province=浙江&city=杭州&address=中河北路>
+POST <http://192.168.1.128:8090/add/insert?svcId=3&customerName=姓名&certNum=123456789012344&contactPhone=15657175987&province=浙江&city=杭州&address=中河北路>
+
+curl 测试方法：
+
+    curl -d "svcId=7&customerName=张三&certNum=12345&contactPhone=15657175999&address=并州路" http://10.52.200.34:8090/app/insert
 
