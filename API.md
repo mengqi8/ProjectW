@@ -115,7 +115,7 @@ GET <http://10.52.200.46:9002/api/order/count_by_day?date=2018-10-18>
 
 返回内容举例：
 
-    {"error":null,"result":[{"province":"浙江","count":2,"date":"2018-10-18"},{"province":"山西","count":1,"date":"2018-10-18"}]}
+    {"error":null,"result":[{"name":"浙江","value":2,"date":"2018-10-18"},{"name":"山西","value":1,"date":"2018-10-18"}]}
 
 ## 3. Java API
 
