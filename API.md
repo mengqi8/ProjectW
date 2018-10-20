@@ -181,11 +181,15 @@ GET <http://10.52.200.46:9002/api/order/detail>
 可选参数：
 
 - status：订单状态，对应数据库orderdetail.status字段，可用的值为：0、1、2，分别表示未处理、已处理、已取消
-- province：省分名称，对应数据库orderdetail.province字段
+- province：省分名称，对应数据库orderdetail.province字段，如果不提供，则返回全国的数据
+- processed：当值为true时，返回订单状态为已处理或已取消状态的订单，也就是说，这两种状态的订单都会返回，即 orderdetail.status in (1, 2)
 
 举例：
 
 <http://10.52.200.46:9002/api/order/detail?province=山西&status=1>
+<http://10.52.200.46:9002/api/order/detail?province=山西&processed=true>
+
+返回结果样例请参考2.4节。
 
 ## 3. Java API
 
