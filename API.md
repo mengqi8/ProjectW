@@ -258,6 +258,18 @@ GET <http://10.52.200.46:9002/api/stat/order_number_by_month>
         ]
     }
 
+### 2.12 登录校验接口
+
+目前为模拟登录
+
+返回登录成功：
+
+GET <http://10.52.200.46:9002/login?success=true>
+
+返回登录失败：
+
+GET <http://10.52.200.46:9002/login>
+
 ## 3. Java API
 
 订单提交 接口，后面的是邮寄地址
