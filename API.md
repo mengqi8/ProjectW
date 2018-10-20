@@ -174,6 +174,90 @@ GET <http://10.52.200.46:9002/api/order/processed>
 
 返回结果样例请参考2.4节。
 
+### 2.9 订单明细查询接口
+
+GET <http://10.52.200.46:9002/api/order/detail>
+
+可选参数：
+
+- status：订单状态，对应数据库orderdetail.status字段，可用的值为：0、1、2，分别表示未处理、已处理、已取消
+- province：省分名称，对应数据库orderdetail.province字段，如果不提供，则返回全国的数据
+- processed：当值为true时，返回订单状态为已处理或已取消状态的订单，也就是说，这两种状态的订单都会返回，即 orderdetail.status in (1, 2)
+- name：姓名，当提供了此字段数据后，将会进行模糊查询，即：c.customer_name like '%姓名%'
+
+举例：
+
+<http://10.52.200.46:9002/api/order/detail?province=山西&status=1>
+<http://10.52.200.46:9002/api/order/detail?province=山西&processed=true>
+<http://10.52.200.46:9002/api/order/detail?name=王>
+
+返回结果样例请参考2.4节。
+
+### 2.10 订单数量统计接口
+
+GET <http://10.52.200.46:9002/api/stat/order_number>
+
+返回值样例：
+
+    {"error":null,"result":{"0":506,"1":4603,"2":4,"all":5113}}
+
+- result["0"] 表示 orderdetail.status 为 0 的数据（未处理的）
+- result["1"] 表示 orderdetail.status 为 1 的数据（已完成的）
+- result["2"] 表示 orderdetail.status 为 2 的数据（已取消的）
+- result["all"] 表示所有的数据
+
+### 2.11 根据月份统计订单数量（所有状态的订单）
+
+GET <http://10.52.200.46:9002/api/stat/order_number_by_month>
+
+返回数据示例：
+
+    {
+        "error": null,
+        "result": [
+            {
+                "month": "2018-01",
+                "count": 503
+            },
+            {
+                "month": "2018-02",
+                "count": 544
+            },
+            {
+                "month": "2018-03",
+                "count": 504
+            },
+            {
+                "month": "2018-04",
+                "count": 482
+            },
+            {
+                "month": "2018-05",
+                "count": 541
+            },
+            {
+                "month": "2018-06",
+                "count": 488
+            },
+            {
+                "month": "2018-07",
+                "count": 486
+            },
+            {
+                "month": "2018-08",
+                "count": 501
+            },
+            {
+                "month": "2018-09",
+                "count": 557
+            },
+            {
+                "month": "2018-10",
+                "count": 507
+            }
+        ]
+    }
+
 ## 3. Java API
 
 订单提交 接口，后面的是邮寄地址
