@@ -206,6 +206,58 @@ GET <http://10.52.200.46:9002/api/stat/order_number>
 - result["2"] 表示 orderdetail.status 为 2 的数据（已取消的）
 - result["all"] 表示所有的数据
 
+### 2.11 根据月份统计订单数量（所有状态的订单）
+
+GET <http://10.52.200.46:9002/api/stat/order_number_by_month>
+
+返回数据示例：
+
+    {
+        "error": null,
+        "result": [
+            {
+                "month": "2018-01",
+                "count": 503
+            },
+            {
+                "month": "2018-02",
+                "count": 544
+            },
+            {
+                "month": "2018-03",
+                "count": 504
+            },
+            {
+                "month": "2018-04",
+                "count": 482
+            },
+            {
+                "month": "2018-05",
+                "count": 541
+            },
+            {
+                "month": "2018-06",
+                "count": 488
+            },
+            {
+                "month": "2018-07",
+                "count": 486
+            },
+            {
+                "month": "2018-08",
+                "count": 501
+            },
+            {
+                "month": "2018-09",
+                "count": 557
+            },
+            {
+                "month": "2018-10",
+                "count": 507
+            }
+        ]
+    }
+
 ## 3. Java API
 
 订单提交 接口，后面的是邮寄地址
