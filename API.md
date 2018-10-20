@@ -193,6 +193,19 @@ GET <http://10.52.200.46:9002/api/order/detail>
 
 返回结果样例请参考2.4节。
 
+### 2.10 订单数量统计接口
+
+GET <http://10.52.200.46:9002/api/stat/order_number>
+
+返回值样例：
+
+    {"error":null,"result":{"0":506,"1":4603,"2":4,"all":5113}}
+
+- result["0"] 表示 orderdetail.status 为 0 的数据（未处理的）
+- result["1"] 表示 orderdetail.status 为 1 的数据（已完成的）
+- result["2"] 表示 orderdetail.status 为 2 的数据（已取消的）
+- result["all"] 表示所有的数据
+
 ## 3. Java API
 
 订单提交 接口，后面的是邮寄地址
